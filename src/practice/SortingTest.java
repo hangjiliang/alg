@@ -37,7 +37,57 @@ public class SortingTest {
 	}
 	
 	@Test
-	public void testSorting(){
+	public void testBubbleSort(){
+		Sorting s = new Sorting();
+		for(int i = 0; i < m.length; i++){
+			int[] mm = m[i];
+			int[] a = mm.clone();
+			int[] b = mm.clone();
+			Arrays.sort(a);
+			s.bubbleSort(b);
+			for(int j = 0; j < a.length; j++){
+				assertEquals(a[j], b[j]);
+			}
+		}
+		System.err.println("bubble sort verified");
+
+	}
+	
+	@Test
+	public void testSelectionSort(){
+		Sorting s = new Sorting();
+		for(int i = 0; i < m.length; i++){
+			int[] mm = m[i];
+			int[] a = mm.clone();
+			int[] b = mm.clone();
+			Arrays.sort(a);
+			s.selectionSort(b);
+			for(int j = 0; j < a.length; j++){
+				assertEquals(a[j], b[j]);
+			}
+		}
+		System.err.println("selection sort verified");
+
+	}
+	
+	@Test
+	public void testInsertionSort(){
+		Sorting s = new Sorting();
+		for(int i = 0; i < m.length; i++){
+			int[] mm = m[i];
+			int[] a = mm.clone();
+			int[] b = mm.clone();
+			Arrays.sort(a);
+			s.insertionSort(b);
+			for(int j = 0; j < a.length; j++){
+				assertEquals(a[j], b[j]);
+			}
+		}
+		System.err.println("insertion sort verified");
+	}
+	
+	@Test
+	public void testHeapSort(){
 		Sorting s = new Sorting();
 		for(int i = 0; i < m.length; i++){
 			int[] mm = m[i];
@@ -48,20 +98,10 @@ public class SortingTest {
 			for(int j = 0; j < a.length; j++){
 				assertEquals(a[j], b[j]);
 			}
-			System.err.println("heap sort verified");
-			
-			a = mm.clone();
-			b = mm.clone();
-			Arrays.sort(a);
-			s.selectionSort(b);
-			for(int j = 0; j < a.length; j++){
-				assertEquals(a[j], b[j]);
-			}
-			System.err.println("selection sort verified");
-			
-			
 			
 		}
+		System.err.println("heap sort verified");
+
 	}
 
 }
