@@ -110,5 +110,99 @@ public class Sorting {
 			a[j+1] = v;
 		}
 	}
+	
+	public void mergeSort(int[] a){
+		int n = a.length;
+		if(n > 1){
+			int[] b = new int[n/2];
+			int[] c = new int[n-n/2];
+			for(int i = 0; i < n/2; i++){
+				b[i] = a[i];
+			}
+			for(int i = n/2; i < n; i++){
+				c[i-n/2] = a[i];
+			}
+			mergeSort(b);
+			mergeSort(c);
+			merge(b, c, a);
+		}
+	}
+	
+	private void merge(int[] a, int[] b, int[] c){
+		int p = a.length;
+		int q = b.length;
+		int i = 0;
+		int j = 0;
+		int k = 0;
+		while(i<p && j<q){
+			if(a[i] <= b[j]){
+				c[k] = a[i];
+				i++;
+			}else{
+				c[k] = b[j];
+				j++;
+			}
+			k++;
+		}
+		if(i == p){
+			// copy b
+			while(j<q){
+				c[k] = b[j];
+				j++;
+				k++;
+			}
+		}else{
+			// copy a
+			while(i<p){
+				c[k] = a[i];
+				i++;
+				k++;
+			}
+		}
+	}
+	
+	public void quickSort(int[] a){
+		quickSort(a, 0, a.length-1);
+	}
+	
+	public void quickSort(int[] a, int left, int right){
+		if(left < right){
+			int s = partition(a, left, right);
+			quickSort(a, left, s-1);
+			quickSort(a, s+1, right);
+		}
+	}
+	
+	private int partition(int[] a, int left, int right){
+		int pivot = a[left];
+		int l = left;
+		int r = right;
+		while(l < r){
+			while(l < right && a[l] <= pivot){
+				l++;
+			}
+			while(r > left && a[r] > pivot){
+				r--;
+			}
+			// swap
+			int temp = a[l];
+			a[l] = a[r];
+			a[r] = temp;
+		}
+		// swap the last round
+		int temp = a[l];
+		a[l] = a[r];
+		a[r] = temp;
+		
+		a[left] = a[r];
+		a[r] = pivot;
+		return r;
+	}
+	
+	public static void main(String[] args){
+		int[] a = {6, 1, 2, 3, 4};
+		Sorting s = new Sorting();
+		s.partition(a, 0, a.length-1);
+	}
 
 }

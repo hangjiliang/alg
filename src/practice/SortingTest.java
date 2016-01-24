@@ -54,6 +54,22 @@ public class SortingTest {
 	}
 	
 	@Test
+	public void testMergeSort(){
+		Sorting s = new Sorting();
+		for(int i = 0; i < m.length; i++){
+			int[] mm = m[i];
+			int[] a = mm.clone();
+			int[] b = mm.clone();
+			Arrays.sort(a);
+			s.mergeSort(b);
+			for(int j = 0; j < a.length; j++){
+				assertEquals(a[j], b[j]);
+			}
+		}
+		System.err.println("merge sort verified");
+	}
+	
+	@Test
 	public void testSelectionSort(){
 		Sorting s = new Sorting();
 		for(int i = 0; i < m.length; i++){
@@ -84,6 +100,22 @@ public class SortingTest {
 			}
 		}
 		System.err.println("insertion sort verified");
+	}
+	
+	@Test
+	public void testQuickSort(){
+		Sorting s = new Sorting();
+		for(int i = 0; i < m.length; i++){
+			int[] mm = m[i];
+			int[] a = mm.clone();
+			int[] b = mm.clone();
+			Arrays.sort(a);
+			s.quickSort(b);
+			for(int j = 0; j < a.length; j++){
+				assertEquals(a[j], b[j]);
+			}
+		}
+		System.err.println("quick sort verified");
 	}
 	
 	@Test
